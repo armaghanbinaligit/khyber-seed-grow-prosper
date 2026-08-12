@@ -37,8 +37,8 @@ export function StatCard({ value, suffix = "", label }: StatCardProps) {
       return;
     }
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
           setActive(true);
           observer.disconnect();
         }
