@@ -22,11 +22,11 @@ export const Route = createFileRoute("/")({
         content:
           "Khyber Seed supplies quality wheat, cotton, rice, maize, vegetable, fodder, oilseed and pulse seed varieties to help farmers grow stronger crops.",
       },
-      { property: "og:title", content: "Khyber Seed — Quality Agricultural Seeds" },
+      { property: "og:title", content: "Khyber Seed — Quality Agricultural Seeds for Better Yields" },
       {
         property: "og:description",
         content:
-          "Growing better seeds, growing better futures. Explore seed varieties selected for real farming conditions.",
+          "Khyber Seed supplies quality wheat, cotton, rice, maize, vegetable, fodder, oilseed and pulse seed varieties to help farmers grow stronger crops.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },

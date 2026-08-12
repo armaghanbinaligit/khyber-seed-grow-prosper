@@ -81,16 +81,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Khyber Seed — Quality Agricultural Seeds" },
+      { title: "Khyber Seed — Quality Agricultural Seeds for Better Yields" },
       {
         name: "description",
         content:
-          "Khyber Seed supplies quality wheat, cotton, rice, maize, vegetable, fodder, oilseed and pulse seed for farmers.",
+          "Khyber Seed supplies quality wheat, cotton, rice, maize, vegetable, fodder, oilseed and pulse seed varieties to help farmers grow stronger crops.",
       },
       { name: "author", content: "Khyber Seed" },
       { property: "og:site_name", content: "Khyber Seed" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Khyber Seed — Quality Agricultural Seeds for Better Yields" },
+      { name: "twitter:title", content: "Khyber Seed — Quality Agricultural Seeds for Better Yields" },
+      { property: "og:description", content: "Khyber Seed supplies quality wheat, cotton, rice, maize, vegetable, fodder, oilseed and pulse seed varieties to help farmers grow stronger crops." },
+      { name: "twitter:description", content: "Khyber Seed supplies quality wheat, cotton, rice, maize, vegetable, fodder, oilseed and pulse seed varieties to help farmers grow stronger crops." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5c0233a396e8bbb66c21b654714f912c/id-preview-7475b93b--b8b266b5-d178-4fe8-ac30-e7b5a9cd9d0f.lovable.app-1786525593178.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5c0233a396e8bbb66c21b654714f912c/id-preview-7475b93b--b8b266b5-d178-4fe8-ac30-e7b5a9cd9d0f.lovable.app-1786525593178.png" },
     ],
     links: [
       {
