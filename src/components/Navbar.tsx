@@ -42,7 +42,7 @@ export function Navbar() {
             <Link
               key={item.label}
               to={item.to}
-              hash={"hash" in item ? item.hash : undefined}
+              {...("hash" in item ? { hash: item.hash } : {})}
               activeOptions={{ exact: item.to === "/", includeHash: false }}
               className="rounded-full px-3 py-2 text-sm font-medium text-foreground/75 transition-colors hover:bg-primary-soft hover:text-primary-deep"
               activeProps={{ className: "text-primary-deep font-semibold" }}
@@ -85,7 +85,7 @@ export function Navbar() {
               <li key={item.label}>
                 <Link
                   to={item.to}
-                  hash={"hash" in item ? item.hash : undefined}
+                  {...("hash" in item ? { hash: item.hash } : {})}
                   onClick={() => setOpen(false)}
                   className="block rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-primary-soft hover:text-primary-deep"
                 >
