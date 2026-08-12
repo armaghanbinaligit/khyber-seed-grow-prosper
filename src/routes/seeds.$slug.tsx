@@ -104,7 +104,7 @@ function SeedDetailPage() {
               Key Features
             </h2>
             <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-              {seed.features.map((feature) => (
+              {seed.features.map((feature: string) => (
                 <li key={feature} className="flex items-start gap-2 text-sm text-foreground/85">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
                   {feature}
@@ -139,7 +139,7 @@ function SeedDetailPage() {
           <div className="rounded-2xl border border-border/70 bg-card p-5">
             <h2 className="text-base font-semibold text-primary-deep">Growing Information</h2>
             <ul className="mt-2 grid gap-1.5 text-sm text-muted-foreground">
-              {seed.growingInfo.map((info) => (
+              {seed.growingInfo.map((info: string) => (
                 <li key={info}>{info}</li>
               ))}
             </ul>
@@ -147,7 +147,7 @@ function SeedDetailPage() {
           <div className="rounded-2xl border border-border/70 bg-card p-5">
             <h2 className="text-base font-semibold text-primary-deep">Available Packaging</h2>
             <ul className="mt-2 grid gap-1.5 text-sm text-muted-foreground">
-              {seed.packaging.map((pack) => (
+              {seed.packaging.map((pack: string) => (
                 <li key={pack} className="flex items-center gap-2">
                   <Package className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
                   {pack}

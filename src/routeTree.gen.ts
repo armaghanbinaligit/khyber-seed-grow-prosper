@@ -10,13 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CropsRouteImport } from './routes/crops'
 import { Route as SeedsIndexRouteImport } from './routes/seeds.index'
+import { Route as SeedsSlugRouteImport } from './routes/seeds.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -34,38 +41,58 @@ const SeedsIndexRoute = SeedsIndexRouteImport.update({
   path: '/seeds/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SeedsSlugRoute = SeedsSlugRouteImport.update({
+  id: '/seeds/$slug',
+  path: '/seeds/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/crops': typeof CropsRoute
+  '/seeds/$slug': typeof SeedsSlugRoute
   '/seeds/': typeof SeedsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/crops': typeof CropsRoute
+  '/seeds/$slug': typeof SeedsSlugRoute
   '/seeds': typeof SeedsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/crops': typeof CropsRoute
+  '/seeds/$slug': typeof SeedsSlugRoute
   '/seeds/': typeof SeedsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/crops' | '/seeds/'
+  fullPaths: '/' | '/about' | '/contact' | '/crops' | '/seeds/$slug' | '/seeds/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/crops' | '/seeds'
-  id: '__root__' | '/' | '/contact' | '/crops' | '/seeds/'
+  to: '/' | '/about' | '/contact' | '/crops' | '/seeds/$slug' | '/seeds'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/crops'
+    | '/seeds/$slug'
+    | '/seeds/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   CropsRoute: typeof CropsRoute
+  SeedsSlugRoute: typeof SeedsSlugRoute
   SeedsIndexRoute: typeof SeedsIndexRoute
 }
 
@@ -76,6 +103,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -99,13 +133,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SeedsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/seeds/$slug': {
+      id: '/seeds/$slug'
+      path: '/seeds/$slug'
+      fullPath: '/seeds/$slug'
+      preLoaderRoute: typeof SeedsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   CropsRoute: CropsRoute,
+  SeedsSlugRoute: SeedsSlugRoute,
   SeedsIndexRoute: SeedsIndexRoute,
 }
 export const routeTree = rootRouteImport
