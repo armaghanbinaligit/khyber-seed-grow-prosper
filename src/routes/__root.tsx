@@ -12,7 +12,6 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
-import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { Footer } from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -139,13 +138,11 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col">
         <Navbar />
-        <main className="flex-1 pb-20 lg:pb-0">
+        <main className="flex-1">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>
         <Footer />
-        <div className="h-16 lg:hidden" aria-hidden="true" />
-        <MobileBottomNav />
         <Toaster position="top-center" />
       </div>
     </QueryClientProvider>
