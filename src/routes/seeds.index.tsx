@@ -5,7 +5,7 @@ import { SeedCard } from "@/components/SeedCard";
 import { Button } from "@/components/ui/button";
 import { crops, seeds, type CategoryId } from "@/data/site";
 
-type SeedsSearch = { category: CategoryId | "all"; q: string };
+type SeedsSearch = { category?: CategoryId | "all"; q?: string };
 
 export const Route = createFileRoute("/seeds/")({
   validateSearch: (search: Record<string, unknown>): SeedsSearch => {
@@ -38,8 +38,10 @@ export const Route = createFileRoute("/seeds/")({
 });
 
 function SeedsPage() {
-  const { category, q } = Route.useSearch();
-  const navigate = useNavigate({ from: "/seeds" });
+  const search = Route.useSearch();
+  const category = search.category ?? "all";
+  const q = search.q ?? "";
+  const navigate = useNavigate({ from: "/seeds/" });
   const [query, setQuery] = useState(q);
 
   const filtered = useMemo(() => {
