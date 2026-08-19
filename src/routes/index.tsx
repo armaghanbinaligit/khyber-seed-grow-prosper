@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Leaf, ShieldCheck, Sprout, Truck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { HeroSlider } from "@/components/HeroSlider";
 import { SectionHeading } from "@/components/SectionHeading";
 import { StatCard } from "@/components/StatCard";
 import { CategoryCard } from "@/components/CategoryCard";
@@ -10,7 +11,6 @@ import { QualitySection } from "@/components/sections/QualitySection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FarmerSection } from "@/components/sections/FarmerSection";
 import { categories, seeds, stats } from "@/data/site";
-import heroImg from "@/assets/hero-field.jpg";
 import aboutImg from "@/assets/about-company.jpg";
 
 export const Route = createFileRoute("/")({
@@ -48,66 +48,12 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const heroPoints = [
-  { label: "95%+ germination", icon: ShieldCheck },
-  { label: "Certified seed lots", icon: Sprout },
-  { label: "Nationwide delivery", icon: Truck },
-] as const;
-
 function Index() {
   const featured = seeds.filter((seed) => seed.featured);
 
   return (
     <>
-      <section className="relative isolate overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Golden wheat field stretching towards rolling green farmland at sunrise"
-          width={1920}
-          height={1088}
-          fetchPriority="high"
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary-deep/85 via-primary-deep/70 to-primary-deep/90 lg:bg-gradient-to-r lg:from-primary-deep/92 lg:via-primary-deep/70 lg:to-primary-deep/30" />
-
-        <div className="container-page py-20 sm:py-28 lg:py-36">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground backdrop-blur">
-              <Leaf className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Agricultural Seed Company
-            </span>
-            <h1 className="mt-5 text-balance text-4xl font-semibold leading-[1.08] text-primary-foreground sm:text-5xl lg:text-6xl">
-              Growing Better Seeds. Growing Better Futures.
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg">
-              Quality agricultural seeds developed to help farmers achieve stronger crops, better
-              yields, and a more productive future.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" variant="gold">
-                <Link to="/seeds">
-                  Explore Our Seeds
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="onDark">
-                <Link to="/about">Learn About Khyber Seed</Link>
-              </Button>
-            </div>
-            <ul className="mt-10 grid max-w-xl gap-3 sm:grid-cols-3">
-              {heroPoints.map(({ label, icon: Icon }) => (
-                <li
-                  key={label}
-                  className="flex items-center gap-2.5 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 px-3.5 py-3 text-sm font-medium text-primary-foreground backdrop-blur"
-                >
-                  <Icon className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                  {label}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+      <HeroSlider />
 
       <section aria-label="Company statistics" className="relative z-10 bg-background pb-10 pt-10 sm:pb-12 lg:-mt-16 lg:pt-0">
         <div className="container-page grid grid-cols-2 gap-3 rounded-3xl sm:gap-4 lg:grid-cols-4">
