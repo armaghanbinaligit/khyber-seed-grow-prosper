@@ -14,6 +14,7 @@ import heroImg from "@/assets/hero-field.jpg";
 import aboutImg from "@/assets/about-company.jpg";
 
 export const Route = createFileRoute("/")({
+  // eslint-disable-next-line
   head: () => ({
     meta: [
       { title: "Khyber Seed — Quality Agricultural Seeds for Better Yields" },
@@ -47,6 +48,12 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
+
+const heroPoints = [
+  { label: "95%+ germination", icon: ShieldCheck },
+  { label: "Certified seed lots", icon: Sprout },
+  { label: "Nationwide delivery", icon: Truck },
+] as const;
 
 function Index() {
   const featured = seeds.filter((seed) => seed.featured);
