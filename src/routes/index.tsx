@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Leaf, PhoneCall, ShieldCheck, Sprout, Truck } from "lucide-react";
+import { ArrowRight, Leaf, ShieldCheck, Sprout, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { StatCard } from "@/components/StatCard";
@@ -14,7 +14,6 @@ import heroImg from "@/assets/hero-field.jpg";
 import aboutImg from "@/assets/about-company.jpg";
 
 export const Route = createFileRoute("/")({
-  // eslint-disable-next-line
   head: () => ({
     meta: [
       { title: "Khyber Seed — Quality Agricultural Seeds for Better Yields" },
