@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Leaf } from "lucide-react";
+import { ArrowRight, Leaf, ShieldCheck, Sprout, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { StatCard } from "@/components/StatCard";
@@ -48,6 +48,12 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const heroPoints = [
+  { label: "95%+ germination", icon: ShieldCheck },
+  { label: "Certified seed lots", icon: Sprout },
+  { label: "Nationwide delivery", icon: Truck },
+] as const;
+
 function Index() {
   const featured = seeds.filter((seed) => seed.featured);
 
@@ -88,12 +94,23 @@ function Index() {
                 <Link to="/about">Learn About Khyber Seed</Link>
               </Button>
             </div>
+            <ul className="mt-10 grid max-w-xl gap-3 sm:grid-cols-3">
+              {heroPoints.map(({ label, icon: Icon }) => (
+                <li
+                  key={label}
+                  className="flex items-center gap-2.5 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 px-3.5 py-3 text-sm font-medium text-primary-foreground backdrop-blur"
+                >
+                  <Icon className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                  {label}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      <section aria-label="Company statistics" className="bg-background py-10 sm:py-12">
-        <div className="container-page grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+      <section aria-label="Company statistics" className="relative z-10 bg-background pb-10 pt-10 sm:pb-12 lg:-mt-16 lg:pt-0">
+        <div className="container-page grid grid-cols-2 gap-3 rounded-3xl sm:gap-4 lg:grid-cols-4">
           {stats.map((stat) => (
             <StatCard key={stat.label} value={stat.value} suffix={stat.suffix} label={stat.label} />
           ))}
