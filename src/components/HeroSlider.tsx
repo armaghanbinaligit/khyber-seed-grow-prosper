@@ -17,7 +17,8 @@ const slides = [
     image: heroImg,
     alt: "Golden wheat field stretching towards rolling green farmland at sunrise",
     eyebrow: "Agricultural Seed Company",
-    title: "Growing Better Seeds. Growing Better Futures.",
+    title: "Growing Better Seeds.",
+    highlight: "Growing Better Futures.",
     description:
       "Quality agricultural seeds developed to help farmers achieve stronger crops, better yields, and a more productive future.",
     primary: { label: "Explore Our Seeds", to: "/seeds" },
@@ -27,7 +28,8 @@ const slides = [
     image: seedBagsImg,
     alt: "Stacked branded seed bags ready for dispatch in a storage warehouse",
     eyebrow: "Certified Seed Lots",
-    title: "Lab-Tested Seed, Packed for Every Season.",
+    title: "Lab-Tested Seed,",
+    highlight: "Packed for Every Season.",
     description:
       "Every batch is graded, treated and tested for purity and germination before it reaches your field.",
     primary: { label: "Browse Catalog", to: "/seeds" },
@@ -37,7 +39,8 @@ const slides = [
     image: farmerImg,
     alt: "Farmer inspecting healthy young crop plants in a green field",
     eyebrow: "Farmer First",
-    title: "Trusted by Growers Across the Country.",
+    title: "Trusted by Growers",
+    highlight: "Across the Country.",
     description:
       "From wheat to vegetables, our agronomy support helps farmers pick the right variety for their soil and season.",
     primary: { label: "See Crop Range", to: "/crops" },
@@ -91,14 +94,23 @@ export function HeroSlider() {
               aria-hidden={i !== index}
               className={i === index ? "animate-in fade-in slide-in-from-bottom-4 duration-700" : "hidden"}
             >
-              <span className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground backdrop-blur">
-                <Leaf className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-primary-foreground/10 py-1.5 pl-2.5 pr-4 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/90 backdrop-blur-md">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-accent/20">
+                  <Leaf className="h-3 w-3 text-accent" aria-hidden="true" />
+                </span>
                 {slide.eyebrow}
               </span>
-              <h1 className="mt-5 text-balance text-4xl font-semibold leading-[1.08] text-primary-foreground sm:text-5xl lg:text-6xl">
-                {slide.title}
+              <h1 className="mt-6 text-balance font-display text-[2.6rem] font-semibold leading-[1.05] tracking-[-0.02em] text-primary-foreground sm:text-6xl lg:text-[4.25rem]">
+                {slide.title}{" "}
+                <span className="relative inline-block italic text-accent">
+                  {slide.highlight}
+                  <span
+                    aria-hidden="true"
+                    className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gradient-to-r from-accent via-accent/60 to-transparent"
+                  />
+                </span>
               </h1>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg">
+              <p className="mt-7 max-w-lg text-[1.02rem] leading-[1.75] text-primary-foreground/80 sm:text-lg sm:leading-[1.8]">
                 {slide.description}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -115,19 +127,19 @@ export function HeroSlider() {
             </div>
           ))}
 
-          <ul className="mt-10 grid max-w-xl gap-3 sm:grid-cols-3">
+          <ul className="mt-10 grid max-w-xl gap-2.5 sm:grid-cols-3">
             {heroPoints.map(({ label, icon: Icon }) => (
               <li
                 key={label}
-                className="flex items-center gap-2.5 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 px-3.5 py-3 text-sm font-medium text-primary-foreground backdrop-blur"
+                className="flex items-center gap-2.5 rounded-xl border border-primary-foreground/15 bg-primary-foreground/[0.08] px-3.5 py-2.5 text-[0.8rem] font-medium tracking-tight text-primary-foreground/90 backdrop-blur-md transition hover:border-accent/40 hover:bg-primary-foreground/15"
               >
-                <Icon className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                <Icon className="h-3.5 w-3.5 shrink-0 text-accent" aria-hidden="true" />
                 {label}
               </li>
             ))}
           </ul>
 
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-9 flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
               <button
                 type="button"
@@ -160,6 +172,11 @@ export function HeroSlider() {
                 />
               ))}
             </div>
+            <span className="font-display text-sm tabular-nums text-primary-foreground/70">
+              <span className="text-primary-foreground">{String(index + 1).padStart(2, "0")}</span>
+              <span className="mx-1 text-primary-foreground/40">/</span>
+              {String(slides.length).padStart(2, "0")}
+            </span>
           </div>
         </div>
       </div>
